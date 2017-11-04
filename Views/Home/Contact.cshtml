@@ -1,0 +1,74 @@
+﻿@model Core.GoogleCatpcha.Model.ContactForm
+@{
+    ViewData["Title"] = "Contact";
+}
+
+<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit'></script>
+
+<h2>@ViewData["Title"].</h2>
+<h3>@ViewData["Message"]</h3>
+<script type="text/javascript">
+    var verifyCallback = function (response) {
+        console.log("Reponse...", response);
+        alert(response);
+        @{
+
+        }
+        return true;
+    }
+    var widgetId2;
+    var onloadCallback = function () {
+        console.log("Captcha Ready...");
+        widgetId2 = grecaptcha.render(document.getElementById('example2'), {
+            'sitekey': '6LdLCDcUAAAAAAQxxR3ZmbYoS6xv38QFPN7os09N'
+        });
+        console.log(widgetId2);
+    }
+</script>
+@using (Html.BeginForm("AuthenticateForm", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label class="control-label">Name</label>
+        <div>
+            @Html.TextBoxFor(n => n.Name)
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Email</label>
+        <div>
+            @Html.TextBoxFor(n => n.Email)
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Message</label>
+        <div>
+            @Html.TextAreaFor(n => n.Message)
+        </div>
+    </div>
+    <div class="form-group">
+        <small>Prove you are human</small>
+        <div id="example2"></div>
+        @*<div class="g-recaptcha" data-type="image" data-sitekey="6LdLCDcUAAAAAAQxxR3ZmbYoS6xv38QFPN7os09N"></div>*@
+        
+    </div>
+
+
+    <div class="form-group">
+        <input type="submit" class="btn btn-sm btn-success" value="Submit" />
+    </div>
+      <!-- Optional noscript fallback. -->
+    <noscript>
+        <div style="width: 302px; height: 462px;">
+            <div style="width: 302px; height: 422px; position: relative;">
+                <div style="width: 302px; height: 422px; position: absolute;">
+                    <iframe src="/recaptcha/api/fallback?k=6LdLCDcUAAAAAAQxxR3ZmbYoS6xv38QFPN7os09N" frameborder="0" scrolling="no" style="width: 302px; height: 422px; border-style: none;"></iframe>
+                </div>
+            </div>
+            <div style="border-style: none; bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px; background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px; height: 60px; width: 300px;">
+                <textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid #c1c1c1; margin: 10px 25px; padding: 0px; resize: none; "></textarea>
+            </div>
+        </div>
+        <br>
+    </noscript>
+                            <!-- END: ReCAPTCHA implementation example. -->
+}

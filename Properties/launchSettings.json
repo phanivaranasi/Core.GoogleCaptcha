@@ -1,0 +1,30 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost/CoreGCaptcha",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Core.GoogleCatpcha": {
+      "commandName": "Project",
+      "workingDirectory": "D:\\phaneendraWSP\\Core.GoogleCatpcha",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:5000",
+      "environmentVariables": {
+        "GOOGLE_PRIVATE_KEY": "6LdLCDcUAAAAAHf-wGiw4vSNUD6Ag1-j7Qme9cqZ",
+        "GOOGLE_PUBLIC_KEY": "6LdLCDcUAAAAAAQxxR3ZmbYoS6xv38QFPN7os09N",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
